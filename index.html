@@ -17,22 +17,39 @@
     </header>
 
     <div class="container">
-        <div class="wins">
-            <h4>Wins</h4>
-            <p id="numWins">0</p>
-        </div>
-        <div class="losses">
-            <h4>Losses</h4>
-            <p id="numLosses">0</p>
-        </div>
-        <div class="remainingGuess">
-            <h4>Guesses Remaining</h4>
-            <p id="maxGuess">10</p>
-        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="hiddenWord">
+                    <h4>Word:</h4>
+                    <div id="word-display"></div>
+                </div>
+        
+                <div class="wins">
+                    <h4>Wins</h4>
+                    <p id="numWins"></p>
+                </div>
 
-        <div class="guessedLetters">
-            <h4>Letters Guessed</h4>
-            <p id="guessLeft"></p> 
+                <div class="losses">
+                    <h4>Losses</h4>
+                    <p id="numLosses"></p>
+                </div>
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+        
+                <div class="remainingGuess">
+                    <h4>Guesses Remaining</h4>
+                    <p id="maxguesses"></p>
+                </div>
+
+                <div class="guessedLetters">
+                    <h4>Letters Guessed</h4>
+                    <p id="guessLeft"></p> 
+                </div>
+            </div>
+        </div>
         
 
     </div>

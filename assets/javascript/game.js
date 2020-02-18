@@ -9,7 +9,7 @@
     // let display = document.querySelector('.display');
     // let guessQuerySelector = document.querySelector('#character');
     // let textForm = document.querySelector('.textForm');
-    
+        var userOption = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
         var computerChoices = ["aerosmith", "blondie", "metallica", "queen", "journey", "scorpions", "poison", "whitesnake", "fleetwoodmac", "kiss", "rush"];
 
         var numWins = 0;
@@ -18,8 +18,9 @@
         var guessLeft = 0;
         //guessedLetters
         var guessedLetters = [];
-
-        var correctCharacters = [];
+        var answerArray = [];
+        var computerArray = [];
+        var guesses = [];
         var isFinished = false;
         //random word is picked by computer
         var realWord = computerChoices[Math.floor(Math.random() * computerChoices.length)];
@@ -39,141 +40,96 @@
     
         //Reset game after win or lose.
         function gameReset() {
-            guessLeft = maxGuess;
+            maxGuess = 10;
             maxGuessText.textContent = maxGuess;
-            isFinished = false;
 
+            guesses = [];
+            guessesText.textContent = guesses;
             
-
+            //picking new word after reset
+            realWord = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+            console.log("reset word:" + realWord);
+            //
             answerArray = []
-            typedCharacters = []
+            computerArray = []
         
 
-            for (var i = 0, j = realWord.length; i < j; i++) {
-                if (realWord[i] === " "); {
-                    answerArray.push(" ");
-                } //else {
-                    //answerArray.push("_");
-                //}
+            for (var i = 0; i < realWord.length; i++) {
+                    answerArray.push("-");
             }
+            wordDisplay.textContent = answerArray.join("");
 
+            for (var i = 0; i < realWord.length; i++) {
+                computerArray.push(realWord[i]);
+            }
             
-            
-
+            return maxGuess, guesses, realWord, answerArray, computerArray;
             
         }
-
-        function updateDisplay() {
-            document.getElementById("numWins").innerHTML = "wins!:" + numWins;
-            document.getElementById("numLosses").innerHTML = "Losses:" + numLosses;
-            document.getElementById("guessLeft").innerHTML = "Guesses Left:" + guessLeft;
-            document.getElementById("answerWord").innerHTML = answerArray.join("");
-            document.getElementById("typedCharacters").innerHTML = typedCharacters;
-
-        };
-
-        function checkGuess(letter) {
-            if (typedCharacters.indexOf(letter) === -1) {
-                typedCharacters.push(letter);
-                
-                if (realWord.indexOf(letter) === -1) {
-                    guessLeft--;
-
-                
+        //Checking both computer and the answerArray are identical
+        function checkArrays(answerArray, computerArray) {
+            if (answerArray.length !== computerArray.length) {
+                return false;
+            }
+            for (var i = 0; i < answerArray.length; i++) {
+                if (answerArray[i] !== computerArray[i]); {
+                    return false;
                 }
+            }
+            return true;
+        }
 
-            } else {
-                for (var j = 0; j < realWord.length; j++) {
-                    if (letter === realWord[j]) {
+        var winsText = document.getElementById("numWins");
+        var lossesText = document.getElementById("numLosses");
+        var wordDisplay = document.getElementById("word-display");
+        var guessesText = document.getElementById("guessLeft");
+        var maxGuessText = document.getElementById("maxguesses");
+
+        for (var i = 0; i < realWord.length; i++) {
+            answerArray[i] = "-";
+        }
+        wordDisplay.textContent = answerArray.join(" ");
+
+        for (var i = 0; i < realWord.length; i++) {
+            computerArray[i] = realWord[i];
+        }
+
+        //check for letters that are being reused.
+        document.onkeyup = function(event) {
+            var letter = event.key.toLowerCase();
+        
+
+            if ((userOption.indexOf(letter) > -1) && (guesses.indexOf(letter) < 0)) {
+                if (computerArray.indexOf(letter) > -1) {
+                    //replace - with the correct letter.
+                    for (var i = 0; i < computerArray.length; i++) {
+                        if (letter == computerArray[i]);
                         answerArray[i] = letter;
+                        wordDisplay.textContent = answerArray.join("");
                     }
                 }
+                //updating Guessed letters
+                guesses += letter;
+                guessesText.textContent = guesses;
+            } else {
+                maxGuess -= 1;
+                maxGuessText.textContent = maxGuess;
+
+                guesses += letter;
+                guessesText.textContent = guesses;
             }
-        };
-
-        function checkWinner() {
-
-            if (answerArray.indexOf("_") === -1) {
-                wins++;
-                isFinished = true;
+            //Checking for a win and resetting
+            if (checkArrays(answerArray, computerArray)) {
+                numWins += 1;
+                winsText.textContent = numWins;
+                gameReset();
+            }
+            //Checking for losses and resetting
+            if (maxGuess === 0) {
+                gameReset();
             }
         }
-
-        function checkLoser() {
-            if(typedCharacters <= 0) {
-                losses++
-                ifFinished = true;
-            }
-        }
-
-
-        // document.onkeyup = function(event) {
-        //     var answerArray = event.key;
-
-        //     if (isFinished) {
-        //         setup();
-        //         isFinished = false;
-        //     }
-        // };
-
         
-        
-
-           
-            // var answerArray = event.key;
-
-        
-
-            // var chosenWord = computerGuess(computerChoices);
-            // console.log(chosenWord)
-
-            // var guessWord = userGuess;
-            // var shortWordLength = computerGuess.length > guessWord.length ? guessWord.length : computerGuess.length;
-            //looping answers with _ _ _ on display.
-            
-
-            // for (var i = 0; i < computerChoices.length; i++) {
-            //     // answerArray[i] = "_";
-            //     console.log(computerChoices);
-
-            //         if (userGuess[i] === computerChoices[i]) {
-            //             correctCharacters.push("_")
-            //             console.log("correct:" + correctCharacters)
-            //             wins++;
-            //         }
-            //         else {
-            //             typedCharacters.push("_")
-            //             console.log("incorrect:" + typedCharacters)
-            //             remains++;
-            //         }
-                    
-            // }
-            
-            // for (var j = 0; j < computerChoices.length; j++) {
-            //     mysteryWord.push(computerChoices.charAt[j]);
-            //     mysteryWord.toString[j]
-            //     console.log("mysteryWord")
-            // }
-            // var remainingLets = chosenWord.length;
-
-            // while (remainingLetters > 0) {
-            //     console.log(anserArray.join(" "));
-            // }
-
-            // if ("userGuess" === null) {
-
-            // } else if (userGuess.length)
-
-
-
-            //Displays
-            // computerChoiceText.textContent = ""
-            // winsText.textContent = "Wins:" + wins;
-            // lossesText.textContent = "losses:" + losses; 
-            // remainingLetters.textContent = "Guesses Remaining:" + remains; 
-            // userChoiceText.textContent = "Your letters:" + userGuess;
-                 
-        //};      
 
     
     
