@@ -110,7 +110,7 @@
                             wordDisplay.textContent = answerArray.join("");
                         }
                     }
-                }
+                
                     //updating Guessed letters
                     guesses += letter;
                     guessesText.textContent = guesses;
@@ -122,7 +122,17 @@
                     guessesText.textContent = guesses;
                 }
                 //Checking for a win and resetting
-                if (checkArrays(answerArray, computerArray)) {
+                
+                if (answerArray.indexOf("_ ") == 1 && gameReset == false) {
+                    console.log(answerArray);
+                    numWins += 1;
+                    winsText.textContent = numWins;
+                    gameReset();
+                    
+                }
+                //trying dashes array test for reset^^
+                if (answerArray == computerArray) {
+                // if (checkArrays(answerArray, computerArray)) {
                     numWins += 1;
                     winsText.textContent = numWins;
                     gameReset();
@@ -134,3 +144,4 @@
                     gameReset();
                 }
             }
+        };
