@@ -1,4 +1,4 @@
-//Use key events to see what players will type.
+    //Use key events to see what players will type.
     //display the page of whats happening
     //Press any key to get started
     //Wins: # of times user guessed the word correctly.
@@ -15,7 +15,7 @@
         var numWins = 0;
         var numLosses = 0;
         var maxGuess = 10;
-        var guessLeft = 0;
+        
         //guessedLetters
         var guessedLetters = [];
         var answerArray = [];
@@ -77,6 +77,7 @@
                 }
             }
             return true;
+            
         }
 
         var winsText = document.getElementById("numWins");
@@ -84,11 +85,12 @@
         var wordDisplay = document.getElementById("word-display");
         var guessesText = document.getElementById("guessLeft");
         var maxGuessText = document.getElementById("maxguesses");
-
+        //this is what we should start with on the page
         for (var i = 0; i < realWord.length; i++) {
             answerArray[i] = "-";
+            
         }
-        wordDisplay.textContent = answerArray.join(" ");
+        wordDisplay.textContent = answerArray.join("");
 
         for (var i = 0; i < realWord.length; i++) {
             computerArray[i] = realWord[i];
@@ -103,33 +105,32 @@
                 if (computerArray.indexOf(letter) > -1) {
                     //replace - with the correct letter.
                     for (var i = 0; i < computerArray.length; i++) {
-                        if (letter == computerArray[i]);
-                        answerArray[i] = letter;
-                        wordDisplay.textContent = answerArray.join("");
+                        if (letter == computerArray[i]) {
+                            answerArray[i] = letter;
+                            wordDisplay.textContent = answerArray.join("");
+                        }
                     }
                 }
-                //updating Guessed letters
-                guesses += letter;
-                guessesText.textContent = guesses;
-            } else {
-                maxGuess -= 1;
-                maxGuessText.textContent = maxGuess;
+                    //updating Guessed letters
+                    guesses += letter;
+                    guessesText.textContent = guesses;
+                } else {
+                    maxGuess -= 1;
+                    maxGuessText.textContent = maxGuess;
 
-                guesses += letter;
-                guessesText.textContent = guesses;
+                    guesses += letter;
+                    guessesText.textContent = guesses;
+                }
+                //Checking for a win and resetting
+                if (checkArrays(answerArray, computerArray)) {
+                    numWins += 1;
+                    winsText.textContent = numWins;
+                    gameReset();
+                }
+                //Checking for losses and resetting
+                if (maxGuess === 0) {
+                    numLosses -= 1;
+                    lossesText.textContent = numLosses;
+                    gameReset();
+                }
             }
-            //Checking for a win and resetting
-            if (checkArrays(answerArray, computerArray)) {
-                numWins += 1;
-                winsText.textContent = numWins;
-                gameReset();
-            }
-            //Checking for losses and resetting
-            if (maxGuess === 0) {
-                gameReset();
-            }
-        }
-        
-
-    
-    
