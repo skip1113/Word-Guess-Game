@@ -42,6 +42,12 @@
         function gameReset() {
             maxGuess = 10;
             maxGuessText.textContent = maxGuess;
+            //trying to add wins with button
+            var winsText = document.getElementById("numWins");
+            if (gameReset == true) {
+                Wins += 1;
+            }
+
 
             guesses = [];
             guessesText.textContent = guesses;
@@ -95,6 +101,12 @@
         for (var i = 0; i < realWord.length; i++) {
             computerArray[i] = realWord[i];
         }
+        function winCheck() {
+            if(answerArray === realWord) {
+                alert("youwin!")
+                numWins++
+            }
+        }
 
         //check for letters that are being reused.
         document.onkeyup = function(event) {
@@ -127,11 +139,12 @@
                     console.log(answerArray);
                     numWins += 1;
                     winsText.textContent = numWins;
+                    myBtn.innerHTML = ('<input id="resetButton" type="button" value="CLICK HERE TO PLAY AGAIN" onclick="gameReset();" />');
                     gameReset();
                     
                 }
                 //trying dashes array test for reset^^
-                if (answerArray == computerArray) {
+                if (answerArray == realWord) {
                 // if (checkArrays(answerArray, computerArray)) {
                     numWins += 1;
                     winsText.textContent = numWins;
@@ -143,5 +156,17 @@
                     lossesText.textContent = numLosses;
                     gameReset();
                 }
+                //trying to create a reset button since the game will not reset after the word
+                // if (answerArray == computerArray) {
+                //     numWins ++;
+                //     winsText.textContent = numWins;
+                //     resetButton.innerHTML = ('<input id"myBtn" type="button" value="Click here to play again!" .onclick="winTest();" />');
+                //     gameReset();
+                // }
+                // function gameReset() {
+                    
+                //     numWins++
+                //     gameReset();
+                // }
             }
         };
