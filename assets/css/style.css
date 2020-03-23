@@ -1,5 +1,24 @@
-/* .container {
+#section-mid{
+    background-image: url("https://www.elegantthemes.com/blog/wp-content/uploads/2018/10/rendered.jpg");
     text-align: center;
-    font-size: 30px;
-} */
+    color: white;
+    font-size: larger;
+}
 
+@media screen and (max-width: 980px) {
+    body {
+        background-color: yellow;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        background-color: black;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    body {
+        background-color: brown;
+    }
+}

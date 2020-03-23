@@ -157,28 +157,13 @@
             }
             //2/19/20 check for console.log on if(wins) to see if console.log hits on the page. lines 143-149
         };
-        //check for letters that are being reused.
-        // function checkLetters(lettersTwo) {
-        //     var isLetterInWord = false;
-
-        //     for (var i = 0; i < blanks; i++) {
-        //         if (realWord[i] == lettersTwo) {
-        //             isLetterInWord = true;
-                    
-        //         }
-        //     }
-        //     if (isLetterInWord) {
-        //         for (var i = 0; i < numBlanks; i++) {
-        //             if (realWord[i] == letterTwo) {
-        //                 blanks[i] = letterTwo;
-        //             }
-        //         }
-        //     }
-        // }
-        // function roundComplete() {
-        //     if (guessedLetters.toString() == blanks.toString()) {
-        //         wins++;
-        //         alert("You Win!");
-        //         gameReset();
-        //     }
-        // }
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.parallax');
+            var instances = M.Parallax.init(elems, options);
+          });
+        
+          // Or with jQuery
+        
+          $(document).ready(function(){
+            $('.parallax').parallax();
+          });

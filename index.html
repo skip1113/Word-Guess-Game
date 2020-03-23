@@ -1,77 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" href="assets/css/reset.css"> -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <title>Word Guess 80's Bands
     </title>
 
 
 </head>
+
 <body>
-    <div class="container">
-        <div class="row">
+    <div class="parallax-container">
+        <div class="parallax"><img src="assets/images/fleetwood.jpg"></div>
+    </div>
+    <div id="section-mid" class="section white">
+        <div class="row container">
             <div class="col-sm-3">
                 <p></p>
             </div>
             <div class="col-sm-6"></div>
-                <div class="text-center">
-                    <h1>Word Guess</h1>
-                    <h2>80's Band's!</h2>
-                    <p>Press any key to get started!</p>
-                </div>
+            <div class="text-center">
+                <h1>Word Guess</h1>
+                <h2>80's Band's!</h2>
+                <p>Press any key to get started!</p>
+            </div>
             <div class="col-sm-3">
                 <p></p>
             </div>
+            <div class="hiddenWord">
+                <h4>Word:</h4>
+                <div id="word-display"></div>
+            </div>
+
+            <div class="wins">
+                <h4>Wins</h4>
+                <p id="wins"></p>
+            </div>
+
+            <div class="losses">
+                <h4>Losses</h4>
+                <p id="numLosses"></p>
+            </div>
+            <div class="remainingGuess">
+                <h4>Guesses Remaining</h4>
+                <p id="maxguesses">10</p>
+            </div>
+
+            <div class="guessedLetters">
+                <h4>Letters Guessed</h4>
+                <p id="guessLeft"></p>
+            </div>
         </div>
+    </div>
         
     </div>
-
-    
-        <div class="row">
-            <div class="col-sm-3">
-                <div class="hiddenWord">
-                    <h4>Word:</h4>
-                    <div id="word-display"></div>
-                </div>
-        
-                <div class="wins">
-                    <h4>Wins</h4>
-                    <p id="wins"></p>
-                </div>
-
-                <div class="losses">
-                    <h4>Losses</h4>
-                    <p id="numLosses"></p>
-                </div>
-                
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-3">
-        
-                <div class="remainingGuess">
-                    <h4>Guesses Remaining</h4>
-                    <p id="maxguesses">10</p>
-                </div>
-
-                <div class="guessedLetters">
-                    <h4>Letters Guessed</h4>
-                    <p id="guessLeft"></p> 
-                </div>
-            </div>
-        </div>
-        
-        
-
+    <div class="parallax-container">
+        <div class="parallax"><img src="assets/images/plam-80.jpg"></div>
     </div>
 
 
 
     <script src="assets/javascript/game.js"></script>
-    
-    
+
+
 </body>
+
 </html>
