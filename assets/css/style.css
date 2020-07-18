@@ -10,6 +10,12 @@
 #word-display {
     font-size: 30px;
 }
+#wins {
+    font-size: 25px;
+}
+#numLosses {
+    font-size: 25px;
+}
 .remainingGuess {
     color: white;
 }

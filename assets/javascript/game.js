@@ -117,7 +117,7 @@ document.onkeyup = function (event) {
         }
         //Checking for losses and resetting
         if (maxGuess === 0) {
-            numLosses -= 1;
+            numLosses += 1;
             lossesText.textContent = numLosses;
             gameReset();
         }
