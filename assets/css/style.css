@@ -7,7 +7,23 @@
     background-size: cover;
     background-position: 50%;
 }
-
+#word-display {
+    font-size: 30px;
+}
+.remainingGuess {
+    color: white;
+}
+#maxguesses {
+    color: white;
+    font-size: 25px;
+}
+.guessedLetters {
+    color: white;
+}
+#guessLeft {
+    color: white;
+    font-size: 25px;
+}
 @media screen and (max-width: 980px) {
     body {
         background-color: yellow;
