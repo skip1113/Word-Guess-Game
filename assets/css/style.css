@@ -1,8 +1,11 @@
 #section-mid{
-    background-image: url("https://www.elegantthemes.com/blog/wp-content/uploads/2018/10/rendered.jpg");
+    background-image: url(../images/fleetwood.jpg);
     text-align: center;
-    color: white;
+    color: black;
     font-size: larger;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%;
 }
 
 @media screen and (max-width: 980px) {
