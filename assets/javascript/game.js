@@ -24,8 +24,7 @@ document.onkeyup = function (event) {
 
     if (userGuess.test(event.key)) {
         document.getElementById("guessLeft").innerHTML = (event.key);
-
-        console.log(userGuess);
+        // console.log(userGuess);
     }
 };
 
